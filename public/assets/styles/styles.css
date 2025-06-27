@@ -20,6 +20,7 @@ body {
     color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
+    background-color: var(--background-color);
 }
 
 /* Header and Navigation */
@@ -121,6 +122,7 @@ nav {
     gap: 4rem;
     max-width: 1200px;
     margin: 0 auto;
+    background-color: var(--background-color);
 }
 
 .hero-content {
@@ -131,6 +133,7 @@ nav {
     font-size: clamp(2rem, 5vw, 3rem);
     margin-bottom: 1.5rem;
     line-height: 1.2;
+    color: var(--text-color);
 }
 
 .hero p {
@@ -160,12 +163,14 @@ nav {
 .team h2 {
     font-size: clamp(2rem, 4vw, 2.5rem);
     margin-bottom: 1.5rem;
+    color: var(--text-color);
 }
 
 .team-description, .team-mission {
     max-width: 800px;
     margin: 0 auto 2rem;
     font-size: clamp(1rem, 2vw, 1.1rem);
+    color: var(--text-color);
 }
 
 .team-grid {
@@ -186,12 +191,14 @@ nav {
     padding: 5rem 5%;
     max-width: 1200px;
     margin: 0 auto;
+    background-color: var(--background-color);
 }
 
 .origin h2 {
     font-size: clamp(1.5rem, 3vw, 2rem);
     margin-bottom: 3rem;
     text-align: center;
+    color: var(--text-color);
 }
 
 .origin-grid {
@@ -210,6 +217,7 @@ nav {
     padding-left: 1.5rem;
     position: relative;
     font-size: clamp(0.9rem, 2vw, 1rem);
+    color: var(--text-color);
 }
 
 .origin-text li::before {
@@ -283,11 +291,13 @@ nav {
     text-align: center;
     max-width: 1200px;
     margin: 0 auto;
+    background-color: var(--background-color);
 }
 
 #video-section h2 {
     font-size: clamp(1.5rem, 3vw, 2rem);
     margin-bottom: 3rem;
+    color: var(--text-color);
 }
 
 .video-container {
@@ -387,7 +397,7 @@ footer {
     .logo-mobile {
         display: block;
     }
-    
+
     .mobile-menu-btn {
         display: block;
     }
