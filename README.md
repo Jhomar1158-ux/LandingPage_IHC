@@ -40,13 +40,13 @@ LandingPage_IHC/
 
 ## Setup Instructions
 
-1. Clone the repository
-2. Create an `assets` folder and add the required images
-3. Open `index.html` in a web browser
+1. Clonar el repositorio
+2. Crea una carpeta llamada `assets` y agrega las imágenes necesarias.=
+3. Abre index.html en un navegador web.
 
 ## Required Assets
 
-Please add the following images to the `assets` folder:
+Por favor, agrega las siguientes imágenes a la carpeta assets:
 
 - `logo.png` - MindTrack logo
 - `hero-image.jpg` - Hero section image (hands reaching out)
@@ -63,9 +63,9 @@ Please add the following images to the `assets` folder:
 
 ## Development
 
-To modify the landing page:
+Para modificar la landing page:
 
-1. Edit `index.html` for content changes
+1. Edita `index.html` para cambiar contenidos
 2. Modify `styles.css` for styling updates
 3. Update `script.js` for functionality changes
 
