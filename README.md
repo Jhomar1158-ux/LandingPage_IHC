@@ -10,6 +10,14 @@ A modern and responsive landing page for MindTrack, a mental health support plat
 - Lazy loading images
 - Animated sections on scroll
 - Cross-browser compatible
+- Modern and responsive design
+- Smooth scrolling navigation
+- Mobile-friendly interface
+- Lazy loading images
+- Animated sections on scroll
+- Cross-browser compatible
+- Dark/light mode toggle
+- Multilingual support (ES/EN)
 
 ## Project Structure
 
