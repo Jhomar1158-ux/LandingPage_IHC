@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeNotifications();
     initializePsychologists();
     initializeProfile();
+    initializeLogout();
 });
 
 // Initialize dashboard
@@ -405,19 +406,41 @@ function confirmAppointment(psychologistName) {
 
 // Profile functionality
 function initializeProfile() {
-    const logoutBtn = document.getElementById('logoutBtn');
+    const profileLogoutBtn = document.querySelector('.profile-actions .btn-secondary');
     const saveBtn = document.querySelector('.profile-actions .btn-primary');
     
-    logoutBtn.addEventListener('click', () => {
-        if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
-            localStorage.removeItem('userData');
-            window.location.href = 'index.html';
-        }
-    });
+    if (profileLogoutBtn) {
+        profileLogoutBtn.addEventListener('click', () => {
+            if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
+                localStorage.removeItem('userData');
+                window.location.href = 'index.html';
+            }
+        });
+    }
     
-    saveBtn.addEventListener('click', () => {
-        alert('Configuración guardada exitosamente.');
-    });
+    if (saveBtn) {
+        saveBtn.addEventListener('click', () => {
+            alert('Configuración guardada exitosamente.');
+        });
+    }
+}
+
+// Header logout functionality
+function initializeLogout() {
+    const headerLogoutBtn = document.getElementById('logoutBtn');
+    
+    if (headerLogoutBtn) {
+        headerLogoutBtn.addEventListener('click', () => {
+            if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
+                // Clear user data
+                localStorage.removeItem('userData');
+                // Show goodbye message
+                alert('¡Hasta luego! Tu sesión ha sido cerrada exitosamente.');
+                // Redirect to landing page
+                window.location.href = 'index.html';
+            }
+        });
+    }
 }
 
 // Utility functions

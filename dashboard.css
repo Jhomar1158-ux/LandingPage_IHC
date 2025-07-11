@@ -89,6 +89,25 @@ body {
     transform: translateY(-2px);
 }
 
+.logout-btn {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logout-btn:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
 .notification-btn {
     position: relative;
     background: none;
@@ -955,6 +974,21 @@ body {
     
     .header-content {
         padding: 0 1rem;
+    }
+    
+    .header-actions {
+        gap: 0.5rem;
+    }
+    
+    .logout-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+        width: auto;
+        min-width: 40px;
+    }
+    
+    .logout-btn span {
+        display: none;
     }
     
     .dashboard-grid {
