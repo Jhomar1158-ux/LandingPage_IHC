@@ -340,6 +340,22 @@ footer {
     opacity: 0.8;
 }
 
+.privacy-link,
+.support-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: white !important;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.privacy-link:hover,
+.support-link:hover {
+    color: var(--primary-color) !important;
+    transform: translateY(-2px);
+}
+
 .social-links {
     display: flex;
     gap: 1.5rem;
@@ -536,16 +552,19 @@ footer {
     font-weight: 500;
 }
 
-.form-group input {
+.form-group input,
+.form-group select {
     width: 100%;
     padding: 0.75rem;
     border: 2px solid #ddd;
     border-radius: 5px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
+    background-color: white;
 }
 
-.form-group input:focus {
+.form-group input:focus,
+.form-group select:focus {
     outline: none;
     border-color: var(--primary-color);
 }

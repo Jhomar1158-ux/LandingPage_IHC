@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - MindTrack</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="assets/Logo.svg" alt="MindTrack Logo">
+            </div>
+            <div class="header-actions">
+                <button class="sos-btn" id="sosBtn">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    SOS
+                </button>
+                <div class="notifications">
+                    <button class="notification-btn" id="notificationBtn">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-count">3</span>
+                    </button>
+                </div>
+                <div class="user-menu">
+                    <button class="user-btn" id="userBtn">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userName">Usuario</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <ul class="sidebar-menu">
+            <li class="menu-item active" data-section="dashboard">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </li>
+            <li class="menu-item" data-section="voice-analysis">
+                <i class="fas fa-microphone"></i>
+                <span>Análisis de Voz</span>
+            </li>
+            <li class="menu-item" data-section="emotional-history">
+                <i class="fas fa-chart-line"></i>
+                <span>Historial Emocional</span>
+            </li>
+            <li class="menu-item" data-section="news">
+                <i class="fas fa-newspaper"></i>
+                <span>Noticias</span>
+            </li>
+            <li class="menu-item" data-section="psychologists">
+                <i class="fas fa-user-md"></i>
+                <span>Psicólogos</span>
+            </li>
+            <li class="menu-item" data-section="profile">
+                <i class="fas fa-cog"></i>
+                <span>Perfil</span>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="content-section active">
+            <div class="section-header">
+                <h2>Dashboard</h2>
+                <p>Resumen de tu bienestar emocional</p>
+            </div>
+            
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Estado Emocional Actual</h3>
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="emotion-indicator">
+                            <div class="emotion-circle stable">
+                                <span>Estable</span>
+                            </div>
+                        </div>
+                        <p>Basado en tu último análisis de voz</p>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Análisis Recientes</h3>
+                        <i class="fas fa-microphone"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="stats">
+                            <div class="stat">
+                                <span class="stat-number">7</span>
+                                <span class="stat-label">Esta semana</span>
+                            </div>
+                            <div class="stat">
+                                <span class="stat-number">28</span>
+                                <span class="stat-label">Este mes</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-header">
+                        <h3>Próxima Cita</h3>
+                        <i class="fas fa-calendar"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="appointment">
+                            <p><strong>Dr. María González</strong></p>
+                            <p>Mañana, 15:00</p>
+                            <button class="btn-small">Ver detalles</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card wide">
+                    <div class="card-header">
+                        <h3>Progreso Semanal</h3>
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="card-content">
+                        <div class="progress-chart">
+                            <canvas id="progressChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Voice Analysis Section -->
+        <section id="voice-analysis" class="content-section">
+            <div class="section-header">
+                <h2>Análisis de Voz</h2>
+                <p>Detecta indicios de trastornos emocionales a través del análisis de tu voz</p>
+            </div>
+            
+            <div class="voice-analysis-container">
+                <div class="recording-area">
+                    <div class="voice-recorder">
+                        <div class="recording-circle" id="recordingCircle">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <h3>Análisis de Voz con IA</h3>
+                        <p>Habla durante 30 segundos para analizar tu estado emocional</p>
+                        <button class="btn-primary" id="startRecording">Iniciar Análisis</button>
+                        <div class="recording-status" id="recordingStatus">
+                            <span class="status-text">Listo para grabar</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analysis-results" id="analysisResults" style="display: none;">
+                    <h3>Resultados del Análisis</h3>
+                    <div class="results-grid">
+                        <div class="result-item">
+                            <div class="result-label">Estado Emocional</div>
+                            <div class="result-value" id="emotionalState">Estable</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-label">Nivel de Estrés</div>
+                            <div class="result-value" id="stressLevel">Bajo</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-label">Confianza</div>
+                            <div class="result-value" id="confidence">87%</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="result-label">Recomendación</div>
+                            <div class="result-value" id="recommendation">Mantén tus hábitos actuales</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Emotional History Section -->
+        <section id="emotional-history" class="content-section">
+            <div class="section-header">
+                <h2>Historial Emocional</h2>
+                <p>Seguimiento de tu evolución emocional a lo largo del tiempo</p>
+            </div>
+            
+            <div class="history-container">
+                <div class="history-filters">
+                    <button class="filter-btn active" data-period="week">Semana</button>
+                    <button class="filter-btn" data-period="month">Mes</button>
+                    <button class="filter-btn" data-period="year">Año</button>
+                </div>
+                
+                <div class="history-chart">
+                    <canvas id="emotionalChart"></canvas>
+                </div>
+                
+                <div class="history-entries">
+                    <h3>Entradas Recientes</h3>
+                    <div class="entry-list">
+                        <div class="history-entry">
+                            <div class="entry-date">Hoy, 14:30</div>
+                            <div class="entry-emotion stable">Estable</div>
+                            <div class="entry-note">Día productivo en el trabajo</div>
+                        </div>
+                        <div class="history-entry">
+                            <div class="entry-date">Ayer, 09:15</div>
+                            <div class="entry-emotion anxious">Ansioso</div>
+                            <div class="entry-note">Presentación importante</div>
+                        </div>
+                        <div class="history-entry">
+                            <div class="entry-date">2 días, 16:45</div>
+                            <div class="entry-emotion happy">Feliz</div>
+                            <div class="entry-note">Reunión con amigos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section id="news" class="content-section">
+            <div class="section-header">
+                <h2>Noticias y Contenido Educativo</h2>
+                <p>Mantente informado sobre salud mental y bienestar</p>
+            </div>
+            
+            <div class="news-container">
+                <div class="news-grid">
+                    <article class="news-card featured">
+                        <div class="news-image">
+                            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=250&fit=crop" alt="Salud Mental">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">Salud Mental</span>
+                            <h3>La importancia del autocuidado en tiempos de estrés</h3>
+                            <p>Descubre técnicas efectivas para manejar el estrés y mantener tu bienestar emocional...</p>
+                            <div class="news-meta">
+                                <span class="news-date">Hace 2 horas</span>
+                                <span class="news-author">Dr. Ana Pérez</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=200&fit=crop" alt="Meditación">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">Técnicas</span>
+                            <h3>5 ejercicios de respiración para la ansiedad</h3>
+                            <p>Aprende técnicas simples pero efectivas para calmar la ansiedad...</p>
+                            <div class="news-meta">
+                                <span class="news-date">Hace 1 día</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=200&fit=crop" alt="Terapia">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">Tratamiento</span>
+                            <h3>Cómo encontrar al psicólogo adecuado para ti</h3>
+                            <p>Guía completa para elegir el profesional que mejor se adapte a tus necesidades...</p>
+                            <div class="news-meta">
+                                <span class="news-date">Hace 3 días</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="news-card">
+                        <div class="news-image">
+                            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&h=200&fit=crop" alt="Ejercicio">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-category">Bienestar</span>
+                            <h3>El ejercicio como medicina para la mente</h3>
+                            <p>Descubre los beneficios del ejercicio físico para tu salud mental...</p>
+                            <div class="news-meta">
+                                <span class="news-date">Hace 1 semana</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Psychologists Section -->
+        <section id="psychologists" class="content-section">
+            <div class="section-header">
+                <h2>Psicólogos Voluntarios</h2>
+                <p>Conecta con profesionales para una primera orientación gratuita</p>
+            </div>
+            
+            <div class="psychologists-container">
+                <div class="search-filters">
+                    <input type="text" placeholder="Buscar por especialidad o nombre" class="search-input">
+                    <select class="filter-select">
+                        <option value="">Todas las especialidades</option>
+                        <option value="anxiety">Ansiedad</option>
+                        <option value="depression">Depresión</option>
+                        <option value="stress">Estrés</option>
+                        <option value="relationships">Relaciones</option>
+                    </select>
+                </div>
+                
+                <div class="psychologists-grid">
+                    <div class="psychologist-card">
+                        <div class="psychologist-image">
+                            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=150&h=150&fit=crop&crop=face" alt="Dra. María González">
+                        </div>
+                        <div class="psychologist-info">
+                            <h3>Dra. María González</h3>
+                            <p class="specialty">Especialista en Ansiedad y Estrés</p>
+                            <p class="experience">8 años de experiencia</p>
+                            <div class="rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="rating-number">4.9</span>
+                            </div>
+                            <p class="availability">Disponible: Lun-Vie 9:00-18:00</p>
+                            <button class="btn-primary">Agendar Cita</button>
+                        </div>
+                    </div>
+
+                    <div class="psychologist-card">
+                        <div class="psychologist-image">
+                            <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=150&h=150&fit=crop&crop=face" alt="Dr. Carlos Ramírez">
+                        </div>
+                        <div class="psychologist-info">
+                            <h3>Dr. Carlos Ramírez</h3>
+                            <p class="specialty">Especialista en Depresión</p>
+                            <p class="experience">12 años de experiencia</p>
+                            <div class="rating">
+                                <span class="stars">★★★★★</span>
+                                <span class="rating-number">4.8</span>
+                            </div>
+                            <p class="availability">Disponible: Mar-Sáb 10:00-19:00</p>
+                            <button class="btn-primary">Agendar Cita</button>
+                        </div>
+                    </div>
+
+                    <div class="psychologist-card">
+                        <div class="psychologist-image">
+                            <img src="https://images.unsplash.com/photo-1594824919414-491b1c63c0e2?w=150&h=150&fit=crop&crop=face" alt="Dra. Ana Torres">
+                        </div>
+                        <div class="psychologist-info">
+                            <h3>Dra. Ana Torres</h3>
+                            <p class="specialty">Terapia Cognitivo-Conductual</p>
+                            <p class="experience">6 años de experiencia</p>
+                            <div class="rating">
+                                <span class="stars">★★★★☆</span>
+                                <span class="rating-number">4.7</span>
+                            </div>
+                            <p class="availability">Disponible: Lun-Jue 14:00-20:00</p>
+                            <button class="btn-primary">Agendar Cita</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section id="profile" class="content-section">
+            <div class="section-header">
+                <h2>Perfil y Configuración</h2>
+                <p>Gestiona tu cuenta y preferencias</p>
+            </div>
+            
+            <div class="profile-container">
+                <div class="profile-info">
+                    <div class="profile-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="profile-details">
+                        <h3 id="profileName">Usuario</h3>
+                        <p id="profileEmail">usuario@ejemplo.com</p>
+                        <p>Miembro desde: Enero 2024</p>
+                    </div>
+                </div>
+                
+                <div class="profile-settings">
+                    <div class="setting-group">
+                        <h4>Notificaciones</h4>
+                        <div class="setting-item">
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>Recordatorios de análisis</span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>Mensajes motivacionales</span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label>
+                                <input type="checkbox">
+                                <span>Noticias semanales</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <h4>Privacidad</h4>
+                        <div class="setting-item">
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>Compartir datos para investigación</span>
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label>
+                                <input type="checkbox" checked>
+                                <span>Permitir análisis anónimo</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="profile-actions">
+                    <button class="btn-primary">Guardar Cambios</button>
+                    <button class="btn-secondary" id="logoutBtn">Cerrar Sesión</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- SOS Modal -->
+    <div id="sosModal" class="modal">
+        <div class="modal-content sos-modal">
+            <span class="close" id="sosClose">&times;</span>
+            <h2>🚨 Emergencia - Líneas de Ayuda</h2>
+            <div class="emergency-contacts">
+                <div class="emergency-item">
+                    <h3>Línea de Prevención del Suicidio</h3>
+                    <p><strong>103</strong> (Gratuito 24/7)</p>
+                    <button class="btn-emergency">Llamar Ahora</button>
+                </div>
+                <div class="emergency-item">
+                    <h3>Minsa - Salud Mental</h3>
+                    <p><strong>113</strong> (Gratuito 24/7)</p>
+                    <button class="btn-emergency">Llamar Ahora</button>
+                </div>
+                <div class="emergency-item">
+                    <h3>Essalud - Línea Ayuda</h3>
+                    <p><strong>107</strong> (Gratuito 24/7)</p>
+                    <button class="btn-emergency">Llamar Ahora</button>
+                </div>
+            </div>
+            <p class="sos-note">Si tienes pensamientos de autolesión, por favor busca ayuda inmediata.</p>
+        </div>
+    </div>
+
+    <!-- Notifications Modal -->
+    <div id="notificationsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="notificationsClose">&times;</span>
+            <h2>Notificaciones</h2>
+            <div class="notifications-list">
+                <div class="notification-item unread">
+                    <i class="fas fa-heart"></i>
+                    <div class="notification-content">
+                        <h4>Análisis completado</h4>
+                        <p>Tu análisis de voz de hoy muestra un estado emocional estable</p>
+                        <span class="notification-time">Hace 2 horas</span>
+                    </div>
+                </div>
+                <div class="notification-item">
+                    <i class="fas fa-calendar"></i>
+                    <div class="notification-content">
+                        <h4>Recordatorio de cita</h4>
+                        <p>Tienes una cita programada para mañana a las 15:00</p>
+                        <span class="notification-time">Hace 1 día</span>
+                    </div>
+                </div>
+                <div class="notification-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <div class="notification-content">
+                        <h4>Consejo del día</h4>
+                        <p>Recuerda tomar descansos regulares durante el trabajo</p>
+                        <span class="notification-time">Hace 2 días</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html> 

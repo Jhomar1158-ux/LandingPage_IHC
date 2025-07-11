@@ -120,6 +120,14 @@
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#features">Beneficios</a></li>
                 <li><a href="#video-section">Demo</a></li>
+                <li><a href="politicas-privacidad.html" class="privacy-link">
+                    <i class="fas fa-shield-alt"></i>
+                    Políticas de Privacidad
+                </a></li>
+                <li><a href="soporte.html" class="support-link">
+                    <i class="fas fa-headset"></i>
+                    Soporte
+                </a></li>
             </div>
             <div class="social-links">
                 <a href="https://www.cpsp.pe/" target="_blank" aria-label="WhatsApp">
@@ -144,6 +152,14 @@
             <span class="close">&times;</span>
             <h2>Iniciar Sesión</h2>
             <form id="loginForm">
+                <div class="form-group">
+                    <label for="userType">Tipo de Usuario:</label>
+                    <select id="userType" name="userType" required>
+                        <option value="">Selecciona tu tipo de usuario</option>
+                        <option value="estudiante">Estudiante</option>
+                        <option value="psicologo">Psicólogo</option>
+                    </select>
+                </div>
                 <div class="form-group">
                     <label for="email">Correo Electrónico:</label>
                     <input type="email" id="email" name="email" required>

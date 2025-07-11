@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soporte - MindTrack</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Estilos específicos para la página de soporte */
+        .support-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+            background-color: var(--background-color);
+            min-height: 100vh;
+        }
+        
+        .support-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .support-header h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .support-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        .support-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .support-form {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .support-info {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .support-form h2 {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .support-info h2 {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+            background-color: white;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-group.priority {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .priority-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .priority-option input[type="radio"] {
+            width: auto;
+            margin: 0;
+        }
+        
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: #5650d8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+        
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: var(--background-color);
+            border-radius: 8px;
+        }
+        
+        .contact-item i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            width: 20px;
+        }
+        
+        .contact-item .contact-details h4 {
+            color: var(--text-color);
+            margin-bottom: 0.25rem;
+        }
+        
+        .contact-item .contact-details p {
+            color: var(--text-secondary);
+            margin: 0;
+        }
+        
+        .faq-section {
+            margin-top: 2rem;
+        }
+        
+        .faq-item {
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            background-color: var(--background-color);
+            padding: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .faq-question:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .faq-question h4 {
+            color: var(--text-color);
+            margin: 0;
+        }
+        
+        .faq-answer {
+            padding: 1rem;
+            background-color: white;
+            color: var(--text-secondary);
+            display: none;
+        }
+        
+        .faq-answer.active {
+            display: block;
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: #5650d8;
+            transform: translateX(-5px);
+        }
+        
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            border: 1px solid #c3e6cb;
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .support-container {
+                padding: 5rem 1rem 2rem;
+            }
+            
+            .support-header h1 {
+                font-size: 2rem;
+            }
+            
+            .support-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .support-form,
+            .support-info {
+                padding: 1.5rem;
+            }
+            
+            .form-group.priority {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="assets/Logo.svg" alt="MindTrack Logo" class="logo-desktop">
+                <img src="assets/Logo_mobile.png" alt="MindTrack Logo" class="logo-mobile">
+            </div>
+            <button class="mobile-menu-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#nosotros">Nosotros</a></li>
+                <li><a href="index.html#features">Beneficios</a></li>
+                <li><a href="index.html#video-section">Demo</a></li>
+                <li><a href="index.html" class="btn-primary">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="support-container">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Volver al Inicio
+            </a>
+            
+            <div class="support-header">
+                <h1><i class="fas fa-headset"></i> Centro de Soporte</h1>
+                <p>Estamos aquí para ayudarte. Contáctanos para resolver tus dudas o reportar problemas.</p>
+            </div>
+
+            <div class="support-content">
+                <div class="support-form">
+                    <h2>Envíanos un Mensaje</h2>
+                    <div class="success-message" id="successMessage">
+                        <i class="fas fa-check-circle"></i>
+                        ¡Mensaje enviado exitosamente! Te responderemos dentro de las próximas 24 horas.
+                    </div>
+                    
+                    <form id="supportForm">
+                        <div class="form-group">
+                            <label for="name">Nombre Completo *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="userType">Tipo de Usuario</label>
+                            <select id="userType" name="userType" required>
+                                <option value="">Selecciona tu tipo</option>
+                                <option value="estudiante">Estudiante</option>
+                                <option value="psicologo">Psicólogo</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="category">Categoría de Consulta *</label>
+                            <select id="category" name="category" required>
+                                <option value="">Selecciona una categoría</option>
+                                <option value="tecnico">Problema Técnico</option>
+                                <option value="cuenta">Problemas de Cuenta</option>
+                                <option value="analisis">Análisis de Voz</option>
+                                <option value="psicologos">Psicólogos y Citas</option>
+                                <option value="privacidad">Privacidad y Datos</option>
+                                <option value="facturacion">Facturación</option>
+                                <option value="sugerencia">Sugerencia</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Asunto *</label>
+                            <input type="text" id="subject" name="subject" required placeholder="Describe brevemente tu consulta">
+                        </div>
+                        
+                        <div class="form-group priority">
+                            <label>Prioridad:</label>
+                            <div class="priority-option">
+                                <input type="radio" id="low" name="priority" value="baja" checked>
+                                <label for="low">Baja</label>
+                            </div>
+                            <div class="priority-option">
+                                <input type="radio" id="medium" name="priority" value="media">
+                                <label for="medium">Media</label>
+                            </div>
+                            <div class="priority-option">
+                                <input type="radio" id="high" name="priority" value="alta">
+                                <label for="high">Alta</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Descripción del Problema *</label>
+                            <textarea id="message" name="message" required placeholder="Describe detalladamente tu consulta o problema..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar Mensaje
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="support-info">
+                    <h2>Información de Contacto</h2>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p>soporte@mindtrack.pe</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div class="contact-details">
+                                <h4>Teléfono</h4>
+                                <p>+51 1 234-5678</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div class="contact-details">
+                                <h4>Horario de Atención</h4>
+                                <p>Lun-Vie: 8:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-headset"></i>
+                            <div class="contact-details">
+                                <h4>Tiempo de Respuesta</h4>
+                                <p>24-48 horas</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-section">
+                        <h3>Preguntas Frecuentes</h3>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <h4>¿Cómo funciona el análisis de voz?</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Nuestro sistema utiliza inteligencia artificial para analizar patrones en tu voz que pueden indicar tu estado emocional. El análisis es completamente privado y seguro.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <h4>¿Cómo agendar una cita con un psicólogo?</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Ve a la sección "Psicólogos" en tu dashboard, selecciona un profesional y haz clic en "Agendar Cita". Recibirás una confirmación por email.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <h4>¿Mis datos están seguros?</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Sí, todos tus datos están protegidos con cifrado de alta seguridad. Puedes revisar nuestras políticas de privacidad para más información.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <div class="faq-question" onclick="toggleFAQ(this)">
+                                <h4>¿Cuánto cuesta usar MindTrack?</h4>
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                            <div class="faq-answer">
+                                <p>Actualmente MindTrack es gratuito para estudiantes. Las consultas iniciales con psicólogos voluntarios también son gratuitas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#nosotros">Nosotros</a></li>
+                <li><a href="index.html#features">Beneficios</a></li>
+                <li><a href="index.html#video-section">Demo</a></li>
+                <li><a href="politicas-privacidad.html">Políticas de Privacidad</a></li>
+            </div>
+            <div class="social-links">
+                <a href="https://www.cpsp.pe/" target="_blank" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.cpsp.pe/" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.cpsp.pe/" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.cpsp.pe/" target="_blank" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Funcionalidad del formulario de soporte (fake)
+        document.getElementById('supportForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simular envío del formulario
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            
+            // Scroll al mensaje de éxito
+            successMessage.scrollIntoView({ behavior: 'smooth' });
+            
+            // Resetear formulario después de 2 segundos
+            setTimeout(() => {
+                this.reset();
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 3000);
+            }, 2000);
+        });
+        
+        // Funcionalidad de FAQ
+        function toggleFAQ(question) {
+            const answer = question.nextElementSibling;
+            const icon = question.querySelector('i');
+            
+            // Cerrar todas las demás FAQs
+            document.querySelectorAll('.faq-answer').forEach(ans => {
+                if (ans !== answer) {
+                    ans.classList.remove('active');
+                    ans.previousElementSibling.querySelector('i').classList.remove('fa-chevron-up');
+                    ans.previousElementSibling.querySelector('i').classList.add('fa-chevron-down');
+                }
+            });
+            
+            // Toggle actual FAQ
+            answer.classList.toggle('active');
+            icon.classList.toggle('fa-chevron-down');
+            icon.classList.toggle('fa-chevron-up');
+        }
+        
+        // Reutilizar funcionalidad del menú móvil
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenuBtn.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                document.body.classList.toggle('no-scroll');
+            });
+        }
+    </script>
+</body>
+</html> 

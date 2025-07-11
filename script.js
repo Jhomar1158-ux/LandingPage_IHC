@@ -133,17 +133,46 @@ window.addEventListener('click', (e) => {
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
+    const userType = document.getElementById('userType').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     
     // Simple fake validation
-    if (email && password) {
-        alert(`¡Bienvenido! Has iniciado sesión con el email: ${email}`);
-        loginModal.style.display = 'none';
-        document.body.style.overflow = 'auto';
+    if (userType && email && password) {
+        // Check user type
+        if (userType === 'psicologo') {
+            // Show coming soon message for psychologists
+            alert('¡Portal para Psicólogos próximamente!\n\nEstamos trabajando en desarrollar la plataforma específica para profesionales de la salud mental. Te notificaremos cuando esté disponible.');
+            
+            // Reset form and close modal
+            loginForm.reset();
+            loginModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            return;
+        }
         
-        // Reset form
-        loginForm.reset();
+        // For students, proceed with normal login
+        if (userType === 'estudiante') {
+            // Store user data in localStorage
+            const userData = {
+                name: email.split('@')[0], // Use part before @ as name
+                email: email,
+                userType: userType,
+                loginTime: new Date().toISOString()
+            };
+            localStorage.setItem('userData', JSON.stringify(userData));
+            
+            // Show success message
+            alert(`¡Bienvenido estudiante! Has iniciado sesión con el email: ${email}`);
+            
+            // Reset form and close modal
+            loginForm.reset();
+            loginModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            
+            // Redirect to dashboard
+            window.location.href = 'dashboard.html';
+        }
     } else {
         alert('Por favor, completa todos los campos.');
     }

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Políticas de Privacidad - MindTrack</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Estilos específicos para la página de políticas */
+        .privacy-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem;
+            background-color: var(--background-color);
+            min-height: 100vh;
+        }
+        
+        .privacy-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .privacy-header h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .privacy-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        .privacy-content {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .privacy-section {
+            margin-bottom: 2rem;
+        }
+        
+        .privacy-section h2 {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+        }
+        
+        .privacy-section h3 {
+            color: var(--text-color);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .privacy-section p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+        
+        .privacy-section ul {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-left: 1.5rem;
+        }
+        
+        .privacy-section li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .download-section {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--background-color);
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+        
+        .download-btn {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .download-btn:hover {
+            background-color: #5650d8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+        
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            color: #5650d8;
+            transform: translateX(-5px);
+        }
+        
+        .last-updated {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        @media (max-width: 768px) {
+            .privacy-container {
+                padding: 5rem 1rem 2rem;
+            }
+            
+            .privacy-header h1 {
+                font-size: 2rem;
+            }
+            
+            .privacy-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="assets/Logo.svg" alt="MindTrack Logo" class="logo-desktop">
+                <img src="assets/Logo_mobile.png" alt="MindTrack Logo" class="logo-mobile">
+            </div>
+            <button class="mobile-menu-btn">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#nosotros">Nosotros</a></li>
+                <li><a href="index.html#features">Beneficios</a></li>
+                <li><a href="index.html#video-section">Demo</a></li>
+                <li><a href="index.html" class="btn-primary">Iniciar Sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="privacy-container">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Volver al Inicio
+            </a>
+            
+            <div class="privacy-header">
+                <h1><i class="fas fa-shield-alt"></i> Políticas de Privacidad</h1>
+                <p>En MindTrack, tu privacidad y seguridad son nuestra prioridad. Conoce cómo protegemos tus datos.</p>
+            </div>
+
+            <div class="download-section">
+                <h3>Descargar Políticas de Privacidad</h3>
+                <p>Descarga una copia de nuestras políticas de privacidad en formato PDF</p>
+                <button class="download-btn" onclick="showDownloadMessage()">
+                    <i class="fas fa-file-pdf"></i>
+                    Descargar PDF
+                </button>
+            </div>
+
+            <div class="privacy-content">
+                <div class="privacy-section">
+                    <h2>1. Información General</h2>
+                    <p>
+                        MindTrack es una plataforma de monitoreo de salud mental desarrollada por estudiantes de la Universidad Peruana de Ciencias Aplicadas (UPC). 
+                        Nos comprometemos a proteger la privacidad de nuestros usuarios y a manejar sus datos personales de manera responsable y transparente.
+                    </p>
+                    <p>
+                        Esta Política de Privacidad describe cómo recopilamos, utilizamos, almacenamos y protegemos la información personal que nos proporciona 
+                        cuando utiliza nuestros servicios de análisis de voz y bienestar emocional.
+                    </p>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>2. Información que Recopilamos</h2>
+                    <h3>2.1 Datos de Registro</h3>
+                    <ul>
+                        <li>Nombre completo</li>
+                        <li>Dirección de correo electrónico</li>
+                        <li>Fecha de nacimiento</li>
+                        <li>Número de teléfono (opcional)</li>
+                    </ul>
+                    
+                    <h3>2.2 Datos de Análisis de Voz</h3>
+                    <ul>
+                        <li>Grabaciones de voz para análisis emocional</li>
+                        <li>Patrones de habla y características vocales</li>
+                        <li>Resultados de análisis de IA</li>
+                        <li>Historial de estados emocionales</li>
+                    </ul>
+                    
+                    <h3>2.3 Datos de Uso</h3>
+                    <ul>
+                        <li>Información sobre cómo utiliza la aplicación</li>
+                        <li>Frecuencia de uso de las funciones</li>
+                        <li>Preferencias de configuración</li>
+                        <li>Datos de navegación y comportamiento</li>
+                    </ul>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>3. Cómo Utilizamos su Información</h2>
+                    <p>Utilizamos la información recopilada para los siguientes propósitos:</p>
+                    <ul>
+                        <li><strong>Análisis de Salud Mental:</strong> Procesar grabaciones de voz para detectar indicadores de bienestar emocional</li>
+                        <li><strong>Personalización:</strong> Adaptar recomendaciones y contenido según sus necesidades</li>
+                        <li><strong>Mejora del Servicio:</strong> Optimizar nuestros algoritmos y funcionalidades</li>
+                        <li><strong>Comunicación:</strong> Enviar notificaciones importantes y actualizaciones del servicio</li>
+                        <li><strong>Investigación:</strong> Contribuir a estudios académicos sobre salud mental (datos anonimizados)</li>
+                    </ul>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>4. Protección de Datos</h2>
+                    <h3>4.1 Medidas de Seguridad</h3>
+                    <p>
+                        Implementamos medidas de seguridad técnicas y organizativas para proteger sus datos personales contra 
+                        acceso no autorizado, alteración, divulgación o destrucción.
+                    </p>
+                    <ul>
+                        <li>Cifrado de datos en tránsito y en reposo</li>
+                        <li>Autenticación de dos factores</li>
+                        <li>Auditorías de seguridad regulares</li>
+                        <li>Acceso restringido a datos personales</li>
+                    </ul>
+                    
+                    <h3>4.2 Almacenamiento de Datos</h3>
+                    <p>
+                        Sus datos se almacenan en servidores seguros ubicados en centros de datos certificados. 
+                        Las grabaciones de voz se procesan y eliminan automáticamente después de 30 días, 
+                        manteniendo solo los resultados del análisis.
+                    </p>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>5. Compartir Información</h2>
+                    <p>No vendemos, intercambiamos ni transferimos su información personal a terceros, excepto en los siguientes casos:</p>
+                    <ul>
+                        <li><strong>Psicólogos Colaboradores:</strong> Con su consentimiento explícito, para facilitar consultas profesionales</li>
+                        <li><strong>Investigación Académica:</strong> Datos anonimizados para estudios científicos aprobados</li>
+                        <li><strong>Proveedores de Servicios:</strong> Terceros que nos ayudan a operar la plataforma (bajo estrictos acuerdos de confidencialidad)</li>
+                        <li><strong>Requisitos Legales:</strong> Cuando sea requerido por ley o autoridades competentes</li>
+                    </ul>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>6. Sus Derechos</h2>
+                    <p>Como usuario, tiene los siguientes derechos sobre sus datos personales:</p>
+                    <ul>
+                        <li><strong>Acceso:</strong> Solicitar una copia de los datos que tenemos sobre usted</li>
+                        <li><strong>Rectificación:</strong> Corregir información inexacta o incompleta</li>
+                        <li><strong>Eliminación:</strong> Solicitar la eliminación de sus datos personales</li>
+                        <li><strong>Portabilidad:</strong> Obtener sus datos en un formato estructurado</li>
+                        <li><strong>Oposición:</strong> Oponerse al procesamiento de sus datos en ciertas circunstancias</li>
+                    </ul>
+                    <p>Para ejercer cualquiera de estos derechos, puede contactarnos a través de <strong>privacidad@mindtrack.pe</strong></p>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>7. Menores de Edad</h2>
+                    <p>
+                        MindTrack no está dirigido a menores de 18 años. Si usted es menor de edad, debe obtener el consentimiento 
+                        de sus padres o tutores legales antes de utilizar nuestros servicios. Si descubrimos que hemos recopilado 
+                        información personal de un menor sin consentimiento adecuado, eliminaremos dicha información inmediatamente.
+                    </p>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>8. Cookies y Tecnologías Similares</h2>
+                    <p>
+                        Utilizamos cookies y tecnologías similares para mejorar su experiencia en nuestra plataforma. 
+                        Puede gestionar sus preferencias de cookies a través de la configuración de su navegador.
+                    </p>
+                    <ul>
+                        <li><strong>Cookies Esenciales:</strong> Necesarias para el funcionamiento básico de la plataforma</li>
+                        <li><strong>Cookies de Análisis:</strong> Nos ayudan a entender cómo utiliza nuestros servicios</li>
+                        <li><strong>Cookies de Personalización:</strong> Permiten adaptar contenido a sus preferencias</li>
+                    </ul>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>9. Retención de Datos</h2>
+                    <p>
+                        Mantenemos sus datos personales solo durante el tiempo necesario para cumplir con los propósitos 
+                        para los que fueron recopilados o según lo requiera la ley:
+                    </p>
+                    <ul>
+                        <li><strong>Datos de cuenta:</strong> Mientras mantenga su cuenta activa</li>
+                        <li><strong>Grabaciones de voz:</strong> 30 días después del análisis</li>
+                        <li><strong>Resultados de análisis:</strong> 5 años para seguimiento médico</li>
+                        <li><strong>Datos de uso:</strong> 2 años para mejora del servicio</li>
+                    </ul>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>10. Cambios en la Política</h2>
+                    <p>
+                        Nos reservamos el derecho de actualizar esta Política de Privacidad en cualquier momento. 
+                        Le notificaremos sobre cambios significativos a través de nuestra plataforma o por correo electrónico. 
+                        El uso continuado de nuestros servicios después de dichos cambios constituye su aceptación de la nueva política.
+                    </p>
+                </div>
+
+                <div class="privacy-section">
+                    <h2>11. Contacto</h2>
+                    <p>
+                        Si tiene preguntas sobre esta Política de Privacidad o sobre el manejo de sus datos personales, 
+                        puede contactarnos a través de:
+                    </p>
+                    <ul>
+                        <li><strong>Correo electrónico:</strong> privacidad@mindtrack.pe</li>
+                        <li><strong>Teléfono:</strong> +51 1 234-5678</li>
+                        <li><strong>Dirección:</strong> Av. Primavera 2390, Surco, Lima - Perú</li>
+                    </ul>
+                </div>
+
+                <div class="last-updated">
+                    <p><strong>Última actualización:</strong> 15 de enero de 2024</p>
+                    <p>Esta política es efectiva a partir de la fecha de última actualización.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#nosotros">Nosotros</a></li>
+                <li><a href="index.html#features">Beneficios</a></li>
+                <li><a href="index.html#video-section">Demo</a></li>
+            </div>
+            <div class="social-links">
+                <a href="https://www.cpsp.pe/" target="_blank" aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.cpsp.pe/" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.cpsp.pe/" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.cpsp.pe/" target="_blank" aria-label="Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Función para mostrar mensaje de descarga (no funcional)
+        function showDownloadMessage() {
+            alert('¡Función de descarga próximamente disponible!\n\nEn una versión completa, esto descargaría un archivo PDF con nuestras políticas de privacidad.');
+        }
+        
+        // Reutilizar funcionalidad del menú móvil
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenuBtn.classList.toggle('active');
+                navLinks.classList.toggle('active');
+                document.body.classList.toggle('no-scroll');
+            });
+        }
+    </script>
+</body>
+</html> 
