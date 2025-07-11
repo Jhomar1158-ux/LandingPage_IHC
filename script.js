@@ -101,6 +101,68 @@ document.addEventListener('DOMContentLoaded', function() {
     images.forEach(img => imageObserver.observe(img));
 });
 
+// Login Modal functionality
+const loginBtn = document.getElementById('loginBtn');
+const loginModal = document.getElementById('loginModal');
+const closeBtn = document.querySelector('.close');
+const loginForm = document.getElementById('loginForm');
+const registerLink = document.getElementById('registerLink');
+
+// Open modal
+loginBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    loginModal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent scrolling
+});
+
+// Close modal
+closeBtn.addEventListener('click', () => {
+    loginModal.style.display = 'none';
+    document.body.style.overflow = 'auto'; // Restore scrolling
+});
+
+// Close modal when clicking outside
+window.addEventListener('click', (e) => {
+    if (e.target === loginModal) {
+        loginModal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore scrolling
+    }
+});
+
+// Handle form submission (fake login)
+loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    
+    // Simple fake validation
+    if (email && password) {
+        alert(`¡Bienvenido! Has iniciado sesión con el email: ${email}`);
+        loginModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        
+        // Reset form
+        loginForm.reset();
+    } else {
+        alert('Por favor, completa todos los campos.');
+    }
+});
+
+// Handle register link
+registerLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    alert('La funcionalidad de registro estará disponible próximamente.');
+});
+
+// Close modal with escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && loginModal.style.display === 'block') {
+        loginModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+});
+
 // Form validation (to be implemented when contact form is added)
 function validateForm(event) {
     // Add form validation logic here
